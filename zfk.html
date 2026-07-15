@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的毕业同学录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #e0f7ff, #fff0f6);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.75);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .sub-title {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        .box-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            margin-bottom: 20px;
+            border-left: 5px solid #409eff;
+            padding-left: 12px;
+        }
+        /* 留言表单 */
+        .form-item {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #444;
+            font-weight: 500;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus {
+            border-color: #409eff;
+            box-shadow: 0 0 0 3px rgba(64,158,255,0.15);
+        }
+        button {
+            padding: 12px 30px;
+            background: #409eff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #337ecc;
+        }
+        /* 留言展示区 */
+        .msg-list {
+            margin-top: 20px;
+        }
+        .msg-item {
+            padding: 16px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            background: #fafcff;
+        }
+        .msg-name {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 17px;
+        }
+        .msg-time {
+            font-size: 12px;
+            color: #999;
+            margin-left: 10px;
+        }
+        .msg-text {
+            margin-top: 8px;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* 毕业相册 */
+        .photo-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+        .photo-box {
+            height: 160px;
+            background: #e8f4ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            border: 1px dashed #b8d8f8;
+        }
+        /* 底部 */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部标题 -->
+        <header>
+            <h1>青春不散场 · 班级同学录</h1>
+            <p class="sub-title">致我们一起奋斗的初中时光 | 2026毕业留念</p>
+        </header>
+
+        <!-- 留言板块 -->
+        <div class="box-card">
+            <h2>写下你的毕业留言</h2>
+            <div class="form-item">
+                <label>你的名字</label>
+                <input type="text" id="username" placeholder="请输入姓名">
+            </div>
+            <div class="form-item">
+                <label>想对大家说的话</label>
+                <textarea id="userMsg" rows="4" placeholder="写下祝福、回忆、期许..."></textarea>
+            </div>
+            <button onclick="addMessage()">提交留言</button>
+
+            <div class="msg-list" id="messageBox">
+                <!-- 留言自动添加在这里 -->
+                <div class="msg-item">
+                    <span class="msg-name">班主任王老师</span>
+                    <span class="msg-time">2026-07-15</span>
+                    <div class="msg-text">愿各位同学中考如愿，前程万里，永远保持少年热忱！常回学校看看！</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 班级相册 -->
+        <div class="box-card">
+            <h2>班级回忆相册</h2>
+            <div class="photo-wrap">
+                <div class="photo-box">班级大合照</div>
+                <div class="photo-box">运动会留念</div>
+                <div class="photo-box">教室日常</div>
+                <div class="photo-box">中考冲刺时光</div>
+                <div class="photo-box">食堂干饭小分队</div>
+                <div class="photo-box">毕业典礼现场</div>
+            </div>
+        </div>
+
+        <!-- 毕业寄语 -->
+        <div class="box-card">
+            <h2>毕业寄语</h2>
+            <p style="line-height: 1.8; color:#444; font-size:16px;">
+                三年春夏秋冬，无数清晨夜晚。我们一起刷题、欢笑、打气，熬过无数备考日夜。
+                <br><br>
+                中考是一段旅途的终点，也是崭新人生的起点。无论去往哪所高中，都不要忘记并肩前行的同窗。
+                <br>
+                愿我们顶峰相见，岁岁平安，万事顺意！
+            </p>
+        </div>
+
+        <footer>
+            2026届全体同学制作 · 青春永远热烈
+        </footer>
+    </div>
+
+    <script>
+        // 添加留言函数
+        function addMessage() {
+            const name = document.getElementById("username").value.trim();
+            const text = document.getElementById("userMsg").value.trim();
+            if(!name || !text) {
+                alert("姓名和留言内容不能为空！");
+                return;
+            }
+            // 获取当前日期
+            const now = new Date();
+            const dateStr = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+            // 创建留言DOM
+            const msgWrap = document.getElementById("messageBox");
+            const item = document.createElement("div");
+            item.className = "msg-item";
+            item.innerHTML = `
+                <span class="msg-name">${name}</span>
+                <span class="msg-time">${dateStr}</span>
+                <div class="msg-text">${text}</div>
+            `;
+            msgWrap.appendChild(item);
+            // 清空输入框
+            document.getElementById("username").value = "";
+            document.getElementById("userMsg").value = "";
+            alert("留言提交成功！");
+        }
+    </script>
+</body>
+</html>
